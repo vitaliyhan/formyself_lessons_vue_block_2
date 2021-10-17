@@ -13,8 +13,8 @@ import Car from "./Car";
 export default {
   data() {
     return {
-      carName: 'Ford from parent',
-      carYear: '2018',
+      carName: 'Ford new',
+      carYear: 2000,
     }
   },
   components: {
