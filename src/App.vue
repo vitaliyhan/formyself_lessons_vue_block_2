@@ -1,13 +1,21 @@
 <template>
-  <h1>{{ msg }}</h1>
+  <div>
+    <h1>{{ msg }}</h1>
+    <app-car></app-car>
+  </div>
 </template>
 
 <script>
+import Car from "./Car";
+
 export default {
-  data () {
+  data() {
     return {
       msg: 'Hi'
     }
+  },
+  components: {
+    appCar: Car
   }
 }
 </script>
