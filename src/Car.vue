@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="car">
     <h3> {{ carName }} </h3>
     <p> {{ carYear }} </p>
   </div>
@@ -8,11 +8,19 @@
 <script>
 export default {
   name: "Car",
-  data() {
-    return {
-      carName:'Ford Model T',
-      carYear:'1945',
-    }
-  }
+  props: [
+    'carName',
+    'carYear'
+  ],
 }
 </script>
+
+<style>
+.car {
+  border: 1px solid black;
+}
+
+.car h3 {
+  padding: 3px;
+}
+</style>

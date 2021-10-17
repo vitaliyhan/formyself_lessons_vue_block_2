@@ -1,7 +1,9 @@
 <template>
   <div>
-    <h1>{{ msg }}</h1>
-    <app-car></app-car>
+    <h1>Parent: {{ carName }}</h1>
+    <app-car :carName="carName" :carYear="carYear"></app-car>
+    <app-car :carName="carName" :carYear="carYear"></app-car>
+    <app-car :carName="carName" :carYear="carYear"></app-car>
   </div>
 </template>
 
@@ -11,7 +13,8 @@ import Car from "./Car";
 export default {
   data() {
     return {
-      msg: 'Hi'
+      carName: 'Ford from parent',
+      carYear: '2018',
     }
   },
   components: {
