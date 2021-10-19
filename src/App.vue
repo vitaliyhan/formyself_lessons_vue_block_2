@@ -1,20 +1,30 @@
 <template>
   <div>
-    <app-counter></app-counter>
-    <app-car></app-car>
+    <app-car>
+      <h2 slot="title">Mazda+html</h2>
+      <p slot="text">{{ carName }}</p>
+    </app-car>
   </div>
 </template>
 
 <script>
 import Car from "./Car";
-import Counter from "./Counter";
 
 export default {
   components: {
     appCar: Car,
-    appCounter: Counter
+  },
+  data() {
+    return {
+      carName: "Ford"
+    }
   }
 }
 </script>
 
+<style scoped>
+h2 {
+  color: red;
+}
+</style>
 
