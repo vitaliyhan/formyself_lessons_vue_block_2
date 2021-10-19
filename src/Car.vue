@@ -1,5 +1,5 @@
 <template>
-  <div class="car" >
+  <div class="car">
     <h3>Name: {{ carName }} / {{ reverseName }}</h3>
     <p>Year: {{ carYear }} </p>
     <button @click="changeName()">Change name</button>
@@ -9,6 +9,8 @@
 </template>
 
 <script>
+import {eventEmitter} from './main'
+
 export default {
   name: "Car",
   props: {
@@ -18,8 +20,7 @@ export default {
       default: 'None'
     },
     carYear: Number,
-    changeFunc: Function,
-    counter:Number
+    changeFunc: Function
   },
   computed: {
     reverseName() {
@@ -32,7 +33,8 @@ export default {
       this.$emit('nameChanged', this.carName)
     },
     updateCounter() {
-      this.$emit('counterUpdated',this.counter++)
+      // this.$emit('counterUpdated',this.counter++)
+      eventEmitter.$emit('counterUpdated',3)
     }
   }
 }
