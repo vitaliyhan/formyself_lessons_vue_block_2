@@ -1,9 +1,10 @@
 <template>
-  <div class="car">
+  <div class="car" >
     <h3>Name: {{ carName }} / {{ reverseName }}</h3>
     <p>Year: {{ carYear }} </p>
     <button @click="changeName()">Change name</button>
     <button @click="changeFunc()">Change from parent</button>
+    <button @click="updateCounter">Counter</button>
   </div>
 </template>
 
@@ -17,7 +18,8 @@ export default {
       default: 'None'
     },
     carYear: Number,
-    changeFunc: Function
+    changeFunc: Function,
+    counter:Number
   },
   computed: {
     reverseName() {
@@ -28,6 +30,9 @@ export default {
     changeName() {
       this.carName = 'Mazda'
       this.$emit('nameChanged', this.carName)
+    },
+    updateCounter() {
+      this.$emit('counterUpdated',this.counter++)
     }
   }
 }

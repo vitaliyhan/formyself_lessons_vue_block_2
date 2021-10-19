@@ -1,34 +1,40 @@
 <template>
   <div>
     <h1>Parent: {{ carName }}</h1>
+    <app-counter :counter="counter"></app-counter>
     <app-car
       :carName="carName"
       :carYear="carYear"
       :changeFunc="changeNameToAudi"
       @nameChanged="carName=$event"
+      :counter="counter"
+      @counterUpdated="counter= $event"
     ></app-car>
-    <app-car :carName="carName" :carYear="carYear"></app-car>
-    <app-car :carName="carName" :carYear="carYear"></app-car>
+
+
   </div>
 </template>
 
 <script>
 import Car from "./Car";
+import Counter from "./Counter";
 
 export default {
   data() {
     return {
       carName: 'Ford new',
       carYear: 2000,
+      counter: 0
     }
   },
   methods: {
-    changeNameToAudi(){
-      this.carName='Audi'
+    changeNameToAudi() {
+      this.carName = 'Audi'
     }
   },
   components: {
-    appCar: Car
+    appCar: Car,
+    appCounter: Counter
   }
 }
 </script>
