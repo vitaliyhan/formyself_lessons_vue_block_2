@@ -1,27 +1,16 @@
 <template>
-  <div style="padding: 20px">
-    <h2>{{ title }}</h2>
-    <input type="text" v-model="search">
-    <ul>
-      <li v-for="name of filterNames">{{ name }}</li>
-    </ul>
-    <hr>
-    <app-list></app-list>
+  <div>
+    <h2>From input</h2>
+    <input type="text" v-model.lazy="title">
+    <p>{{ title }}</p>
   </div>
 </template>
 
 <script>
-import mixinList from "./mixin";
 
 export default {
-  mixins: [mixinList],
-  filters: {
-    upperCase(data) {
-      return data.toUpperCase()
-    }
-  },
-  data(){
-    return{
+  data() {
+    return {
       title: 'Hi there'
     }
   }
