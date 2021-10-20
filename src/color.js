@@ -1,8 +1,13 @@
 export default {
   bind(el, bindings, vnode) {
     console.log(bindings)
-    console.log(vnode)
-    el.style[bindings.arg] = bindings.value;
+    if (bindings.modifiers['border']) {
+      el.style.border = '3px solid green'
+    }
+    if (bindings.modifiers['big']) {
+      el.style.fontSize = '100px'
+    }
+      el.style[bindings.arg] = bindings.value
   }
 }
 
