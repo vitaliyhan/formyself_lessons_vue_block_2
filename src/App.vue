@@ -6,12 +6,15 @@
 </template>
 
 <script>
-
+import ColorDirective from './color'
 export default {
   data() {
     return {
       title: "Hi title!",
     }
+  },
+  directives: {
+    colored: ColorDirective
   }
 }
 </script>
