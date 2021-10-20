@@ -1,38 +1,28 @@
 <template>
-  <div>
+  <div style="padding: 20px">
     <h2>{{ title }}</h2>
     <input type="text" v-model="search">
     <ul>
       <li v-for="name of filterNames">{{ name }}</li>
     </ul>
-
+    <hr>
+    <app-list></app-list>
   </div>
 </template>
 
 <script>
+import mixinList from "./mixin";
+
 export default {
-  data() {
-    return {
-      title: "Hi title!",
-      names: [
-        'Max',
-        'Igor',
-        'Alena',
-        'Max',
-      ],
-      search: ''
-    }
-  },
-  computed: {
-    filterNames() {
-      return this.names.filter(name => {
-        return name.toLowerCase().indexOf(this.search.toLowerCase()) !== -1
-      })
-    },
-  },
+  mixins: [mixinList],
   filters: {
     upperCase(data) {
       return data.toUpperCase()
+    }
+  },
+  data(){
+    return{
+      title: 'Hi there'
     }
   }
 }
