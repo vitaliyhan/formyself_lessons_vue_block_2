@@ -1,11 +1,14 @@
 <template>
   <div>
     <h2>From input</h2>
-    <select v-model="defaultSocial">
-      <option v-for="s of socialList" >{{ s }}</option>
+    <select v-model="social">
+      <option
+        v-for="s of socialList"
+        :selected="s==defaultSocial"
+      >{{ s }}</option>
     </select>
     <hr>
-    <p>{{ defaultSocial }}</p>
+    <p>{{ social }}</p>
   </div>
 </template>
 
@@ -14,7 +17,8 @@
 export default {
   data() {
     return {
-      defaultSocial: 'vk',
+      defaultSocial: 'ok',
+      social: 'ok',
       socialList: ['facebook', 'ok', 'vk']
     }
   }
