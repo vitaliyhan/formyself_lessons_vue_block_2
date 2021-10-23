@@ -12,6 +12,7 @@
           class="form-control">
         <div class="invalid-feedback" v-if="!$v.email.required">Email field is required</div>
         <div class="invalid-feedback" v-if="!$v.email.email">Email field needs to be email</div>
+        <div class="invalid-feedback" v-if="!$v.email.uniqueEmail">This email already existed</div>
       </div>
       <div class="form-group">
         <label for="password">password</label>
@@ -26,7 +27,6 @@
           chars
         </div>
       </div>
-
       <div class="form-group">
         <label for="confirmPassword">Confirm password</label>
         <input
@@ -58,7 +58,16 @@ export default {
   validations: {
     email: {
       required,
-      email
+      email,
+      uniqueEmail: function (newEmail) {
+        if (newEmail === '') return true
+        return new Promise((resolve, reject) => {
+          setTimeout(() => {
+            const value = newEmail !== 'test@ya.ru'
+            resolve(true)
+          }, 3000)
+        })
+      }
     },
     password: {
       minLength: minLength(8),
