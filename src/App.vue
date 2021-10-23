@@ -7,14 +7,19 @@
           v-model="email"
           type="email"
           id="email"
+          @blur="$v.email.$touch()"
           class="form-control">
       </div>
+      <pre>
+        {{ $v.email }}
+      </pre>
     </form>
 
   </div>
 </template>
 
 <script>
+import {required, email} from 'vuelidate/lib/validators'
 
 export default {
   data() {
@@ -22,6 +27,12 @@ export default {
       email: ''
     }
   },
+  validations: {
+    email: {
+      required,
+      email
+    }
+  }
 }
 </script>
 
