@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <form class="pt-4">
+    <form class="pt-4" @submit.prevent="onSubmit">
       <div class="form-group">
         <label for="email">Email</label>
         <input
@@ -39,6 +39,8 @@
         <div class="invalid-feedback" v-if="!$v.confirmPassword.sameAs">Not the same
         </div>
       </div>
+      <button class="btn btn-success mt-3" type="submit" :disabled="$v.$invalid">Submit</button>
+      <pre>{{ $v.$invalid }}</pre>
     </form>
 
   </div>
@@ -48,6 +50,12 @@
 import {required, email, minLength, sameAs} from 'vuelidate/lib/validators'
 
 export default {
+  methods: {
+    onSubmit() {
+      console.log('Email',this.email)
+      console.log('password',this.password)
+    }
+  },
   data() {
     return {
       email: '',
@@ -60,12 +68,11 @@ export default {
       required,
       email,
       uniqueEmail: function (newEmail) {
-        if (newEmail === '') return true
         return new Promise((resolve, reject) => {
           setTimeout(() => {
             const value = newEmail !== 'test@ya.ru'
             resolve(true)
-          }, 3000)
+          }, 500)
         })
       }
     },
