@@ -2,16 +2,9 @@
   <div>
     <h1>Car {{ id }}</h1>
     <button class="btn bnt-small btn-info" @click="goBackToCars">Back</button>
-
-    <!--    <router-link -->
-    <!--      tag="button" -->
-    <!--      :to="'/car/'+id+'/full'"-->
-    <!--      class="btn btn-info"-->
-    <!--    >Full info</router-link>-->
-
     <router-link
       tag="button"
-      :to="{name: 'CarFull', params:{id: id}}"
+      :to="{name: 'CarFull', params:{id: id}, query:{name:'Mazda',year:'2000'}}"
       class="btn btn-info"
     >Full info
     </router-link>
