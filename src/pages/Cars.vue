@@ -1,5 +1,16 @@
 <template>
-  <h1>Car page</h1>
+  <div>
+    <h1>Car page</h1>
+    <ul>
+      <router-link
+        tag="li"
+        v-for="car in 10"
+        :to="'/car/'+car"
+        :key="car">
+        <a>Car {{ car }}</a>
+      </router-link>
+    </ul>
+  </div>
 </template>
 
 <script>

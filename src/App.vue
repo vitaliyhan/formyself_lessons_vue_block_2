@@ -11,6 +11,8 @@
           <div class="navbar-nav">
             <router-link class="nav-link" active-class="active" exact aria-current="page" to="/">Home</router-link>
             <router-link class="nav-link" active-class="active" to="/cars">Cars</router-link>
+            <router-link class="nav-link" active-class="active" to="/car/3">Cars</router-link>
+            <router-link class="nav-link" active-class="active" to="/car/6">Car 6</router-link>
           </div>
         </div>
       </div>
