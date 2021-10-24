@@ -9,8 +9,8 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav">
-            <router-link class="nav-link active" aria-current="page" to="/">Home</router-link>
-            <router-link class="nav-link" to="/cars">Cars</router-link>
+            <router-link class="nav-link" active-class="active" exact aria-current="page" to="/">Home</router-link>
+            <router-link class="nav-link" active-class="active" to="/cars">Cars</router-link>
           </div>
         </div>
       </div>
