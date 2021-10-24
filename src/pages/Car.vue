@@ -4,7 +4,7 @@
     <button class="btn bnt-small btn-info" @click="goBackToCars">Back</button>
     <router-link
       tag="button"
-      :to="{name: 'CarFull', params:{id: id}, query:{name:'Mazda',year:'2000'}}"
+      :to="{name: 'CarFull', params:{id: id}, query:{name:'Mazda',year:'2000'}, hash:'#scroll'}"
       class="btn btn-info"
     >Full info
     </router-link>

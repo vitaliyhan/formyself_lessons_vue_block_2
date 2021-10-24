@@ -21,11 +21,23 @@ export default new VueRouter({
         {
           path: 'full',
           component: CarFull,
-          name:'CarFull'
+          name: 'CarFull'
         }
       ]
     },
   ],
-  mode: 'history'
+  mode: 'history',
+  scrollBehavior(to, from, save) {
+    if (save) {
+      return save
+    }
+    if (to.hash) {
+      return {
+        selector: to.hash
+      }
+    }
+
+
+  }
 
 })
