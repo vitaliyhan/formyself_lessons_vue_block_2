@@ -11,5 +11,10 @@ export default new Vuex.Store({
     computedCounter(state) {
       return state.counter * 10
     }
+  },
+  mutations: {
+    changeCounter(state, payload) {
+      state.counter += payload
+    }
   }
 })
