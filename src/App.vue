@@ -45,44 +45,20 @@ export default {
         name: this.carName,
         year: this.carYear,
       }
-      this.resource.save({}, car)
+      this.resource.save({}, car).then(() => this.loadCars())
     },
     loadCars() {
       this.resource.get().then(response => response.json()).then(data => this.cars = data)
     },
-    // deleteCar(id) {
-    //   this.$http.delete('http://localhost:3000/cars/' + id + '/')
-    //     .then(
-    //       function () {
-    //         this.$http.get('http://localhost:3000/cars')
-    //           .then(response => {
-    //             return response.json()
-    //           })
-    //           .then(cars => {
-    //             this.cars = cars
-    //           })
-    //       }
-    //     )
-    // },
     deleteCar(id) {
       this.resource.delete({id: id})
         .then(
-          function () {
-            this.resource.get()
-              .then(response => {
-                return response.json()
-              })
-              .then(cars => {
-                this.cars = cars
-              })
-          }
+          () => this.loadCars()
         )
     },
-
-
   },
   created() {
-    this.resource = this.$resource('http://localhost:3000/cars{/id}')
+    this.resource = this.$resource('cars{/id}')
   }
 }
 </script>
