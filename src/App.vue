@@ -19,6 +19,10 @@
         v-for="car of cars"
         :key="car.id"
       >{{ car.id }} <strong>{{ car.name }}</strong> - {{ car.year }}
+        <button type="button" class="btn btn-outline-danger" @click.prevent="deleteCar(car.id)">
+          <i class="bi bi-trash"></i>
+          Delete
+        </button>
       </li>
     </ul>
   </div>
@@ -31,7 +35,8 @@ export default {
     return {
       carName: 'Name',
       carYear: 123,
-      cars: []
+      cars: [],
+      resource: null
     }
   },
   methods: {
@@ -40,23 +45,44 @@ export default {
         name: this.carName,
         year: this.carYear,
       }
-      this.$http.post('http://localhost:3000/cars', car)
-        .then(response => {
-          return response.json()
-        })
-        .then(newCar => {
-        })
+      this.resource.save({}, car)
     },
     loadCars() {
-      this.$http.get('http://localhost:3000/cars')
-        .then(response => {
-          return response.json()
-        })
-        .then(cars => {
-          this.cars=cars
-        })
-    }
+      this.resource.get().then(response => response.json()).then(data => this.cars = data)
+    },
+    // deleteCar(id) {
+    //   this.$http.delete('http://localhost:3000/cars/' + id + '/')
+    //     .then(
+    //       function () {
+    //         this.$http.get('http://localhost:3000/cars')
+    //           .then(response => {
+    //             return response.json()
+    //           })
+    //           .then(cars => {
+    //             this.cars = cars
+    //           })
+    //       }
+    //     )
+    // },
+    deleteCar(id) {
+      this.resource.delete({id: id})
+        .then(
+          function () {
+            this.resource.get()
+              .then(response => {
+                return response.json()
+              })
+              .then(cars => {
+                this.cars = cars
+              })
+          }
+        )
+    },
 
+
+  },
+  created() {
+    this.resource = this.$resource('http://localhost:3000/cars{/id}')
   }
 }
 </script>
