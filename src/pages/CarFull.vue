@@ -17,6 +17,10 @@ export default {
     name(){
       return this.$route.query.name
     },
+  },
+  beforeRouteEnter(to, fromR, next){
+    console.log('beforeRouterEnter')
+    next(true)
   }
 }
 </script>
@@ -24,7 +28,7 @@ export default {
 <style scoped>
   .scroll{
     width: 100px;
-    height: 1000px;
+    height: 100px;
 
   }
 </style>

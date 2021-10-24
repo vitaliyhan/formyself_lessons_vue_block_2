@@ -30,6 +30,13 @@ export default {
     $route(toRoute, fromRoute) {
       this.id = toRoute.params['id']
     }
+  },
+  beforeRouteLeave(to,fromR, next) {
+    console.log('beforeRouteLeave')
+    if(window.confirm('Are you sure?')){
+      next()
+    }
+
   }
 }
 </script>
